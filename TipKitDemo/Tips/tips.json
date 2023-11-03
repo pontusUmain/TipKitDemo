@@ -1,0 +1,14 @@
+{
+"tips" : [
+{
+"title": "First tip",
+"message": "First information",
+"id": "first"
+},
+{
+"title": "Second tip",
+"message": "Second information",
+"id": "second"
+}
+]
+}
