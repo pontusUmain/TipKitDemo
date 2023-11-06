@@ -8,8 +8,6 @@
 import Foundation
 import TipKit
 
-
-
 struct FirstTip: Tip {
     var title: Text {
         Text("This is a tip")
@@ -42,6 +40,10 @@ struct FavoriteTip: Tip {
 struct JsonTip: Tip {
     
     let model: TipModels.Model
+    
+    var id: String {
+        model.id
+    }
     
     var title: Text {
         Text(model.title)

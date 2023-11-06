@@ -11,7 +11,6 @@ import TipKit
 struct SecondView: View {
     
     private let tipConverter = TipConverter.shared
-    private let buttonTip = FavoriteTip()
     @State var isFavorite: Bool = false
     
     var body: some View {
@@ -34,7 +33,7 @@ struct SecondView: View {
     private func imageButton() -> some View {
         Button(action: {
             isFavorite.toggle()
-//            FavoriteTip.didPressFavorite.sendDonation()
+            tipConverter.invalidateTipById("second")
         }){
             Image(systemName: "star.fill")
                 .resizable()

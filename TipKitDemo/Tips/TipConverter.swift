@@ -20,4 +20,11 @@ class TipConverter {
     func tipByIdExists(_ id: String) -> Bool {
         tipModels.tips.contains(where: { $0.id == id })
     }
+    
+    func invalidateTipById(_ id: String) {
+        if let tip = tipModels.tips.first(where: { $0.id == id }) {
+            JsonTip(model: tip).invalidate(reason: .actionPerformed)
+        }
+
+    }
 }
