@@ -14,7 +14,7 @@ class TipConverter {
     let tips: [JsonTip]
     
     init() {
-        var tipModels = Bundle.main.decode(TipModels.self, from: "tips.json")
+        let tipModels = Bundle.main.decode(TipModels.self, from: "tips.json")
         tips = tipModels.tips.map { JsonTip(model: $0) }
     }
     

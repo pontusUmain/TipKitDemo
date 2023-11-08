@@ -19,6 +19,7 @@
 		919B3C5F2AF521BA00DE0DDC /* TipModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919B3C5E2AF521BA00DE0DDC /* TipModel.swift */; };
 		919B3C612AF521E600DE0DDC /* TipConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919B3C602AF521E600DE0DDC /* TipConverter.swift */; };
 		919B3C642AF5256100DE0DDC /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919B3C632AF5256100DE0DDC /* View+Extension.swift */; };
+		91C5FA592AFBC87600E4A15E /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C5FA582AFBC87600E4A15E /* FirstView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		919B3C5E2AF521BA00DE0DDC /* TipModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipModel.swift; sourceTree = "<group>"; };
 		919B3C602AF521E600DE0DDC /* TipConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipConverter.swift; sourceTree = "<group>"; };
 		919B3C632AF5256100DE0DDC /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		91C5FA582AFBC87600E4A15E /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				9140F45C2AE6BA2B00E328E0 /* ContentView.swift */,
 				9140F4702AE9413F00E328E0 /* SecondView.swift */,
+				91C5FA582AFBC87600E4A15E /* FirstView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9140F4712AE9413F00E328E0 /* SecondView.swift in Sources */,
+				91C5FA592AFBC87600E4A15E /* FirstView.swift in Sources */,
 				919B3C5F2AF521BA00DE0DDC /* TipModel.swift in Sources */,
 				919B3C612AF521E600DE0DDC /* TipConverter.swift in Sources */,
 				919B3C5D2AF521A000DE0DDC /* Bundle+Extension.swift in Sources */,
