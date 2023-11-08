@@ -21,7 +21,5 @@ struct TipKitDemoApp: App {
                     ])
                 }
         }
-        
-        
     }
 }
