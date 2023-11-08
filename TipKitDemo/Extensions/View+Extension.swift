@@ -9,11 +9,11 @@ import Foundation
 import SwiftUI
 import TipKit
 
-extension View {    
+extension View {
     @ViewBuilder func ifTip(tipId: String) -> some View {
-        if let tip = TipConverter.shared.getTipById(tipId) {
-           self
-                .popoverTip(JsonTip(model: tip))
+        if let tip = TipConverter.shared.tips.first(where: { $0.id == tipId })
+        {
+            self.popoverTip(tip)
         } else {
             self
         }

@@ -21,9 +21,6 @@ struct ContentView: View {
             .padding()
         }
         .navigationTitle("Home")
-        .onAppear {
-            print(tipConverter.tipModels)
-        }
     }
     
     func headerImage() -> some View {
@@ -36,10 +33,8 @@ struct ContentView: View {
     @ViewBuilder
     func makeTip() -> some View {
         VStack {
-            if let firstTip = tipConverter.getTipById("first") {
-                TipView(JsonTip(model: firstTip))
-            } else {
-                EmptyView()
+            if let firstTip = tipConverter.tips.first(where: { $0.id == "first" }){
+                TipView(firstTip)
             }
         }
     }

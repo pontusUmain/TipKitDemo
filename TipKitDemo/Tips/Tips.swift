@@ -37,24 +37,5 @@ struct FavoriteTip: Tip {
     }
 }
 
-struct JsonTip: Tip {
-    
-    let model: TipModels.Model
-    
-    var id: String {
-        model.id
-    }
-    
-    var title: Text {
-        Text(model.title)
-    }
-    
-    var message: Text? {
-        if let message = model.message {
-            return Text(message)
-        }
-        return nil
-    }
 
-}
 
