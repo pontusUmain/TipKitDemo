@@ -10,9 +10,8 @@ import SwiftUI
 struct TabBarView: View {
     var body: some View {
         TabView {
-                FirstView().tabItem { Text("First") }
-                ContentView().tabItem { Text("Home") }
-                SecondView().tabItem { Text("Favorite") }
+                InlineExample().tabItem { Text("1") }
+                PopoverExample().tabItem { Text("2") }
         }
     }
 }

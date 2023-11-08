@@ -16,16 +16,25 @@ struct FirstView: View {
     var body: some View {
         VStack {
             Text("Hello world")
-            TipView(tip) { action in
+            Button(action: {}) {
+                Text("Button stuff")
+            }
+            .popoverTip(tip) { action in
                 if action.id == "id" {
-                    showSheet = true
-                } else {
-                    print(action.id)
+                    tip.invalidate(reason: .actionPerformed)
+                    showThatSheet()
                 }
             }
         }
         .sheet(isPresented: $showSheet) {
             Text("Read more")
+        }
+    }
+    
+    func showThatSheet() {
+        Task {
+            try await Task.sleep(for: .seconds(1))
+            showSheet = true
         }
     }
 }
