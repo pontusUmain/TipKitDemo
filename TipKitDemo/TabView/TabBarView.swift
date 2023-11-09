@@ -12,6 +12,7 @@ struct TabBarView: View {
         TabView {
                 InlineExample().tabItem { Text("1") }
                 PopoverExample().tabItem { Text("2") }
+                ExternalView().tabItem { Text("3") }
         }
     }
 }

@@ -13,13 +13,12 @@ struct TipKitDemoApp: App {
     var body: some Scene {
         WindowGroup {
             TabBarView()
-                .task {
-                    try? Tips.resetDatastore()
-                    try? Tips.configure([
-                        .displayFrequency(.immediate),
-                        .datastoreLocation(.applicationDefault)
-                    ])
-                }
+//                .task {
+//                    try? Tips.resetDatastore()
+//                    try? Tips.configure([
+//                        .displayFrequency(.immediate),
+//                    ])
+//                }
         }
     }
 }

@@ -1,13 +1,32 @@
 //
-//  PopoverExample.swift
+//  FinalPopover.swift
 //  TipKitDemo
 //
-//  Created by Pontus Croneld on 2023-11-08.
+//  Created by Pontus Croneld on 2023-11-09.
 //
 
 import SwiftUI
+import TipKit
 
-struct PopoverExample: View {
+struct FavoriteRunTip: Tip {
+    var title: Text {
+        Text("Mark as favorite")
+    }
+
+    var message: Text? {
+        Text("And remember it forever")
+    }
+
+    var actions: [Action] {
+        [
+            Action(id: "detailPage", title: "Read more")
+        ]
+    }
+}
+
+struct FinalPopoverExample: View {
+    
+    private let favoriteTip = FavoriteRunTip()
     
     @State var isFavorite = false
     
@@ -23,8 +42,14 @@ struct PopoverExample: View {
             .toolbar(content: {
                 Button(action: {
                     isFavorite.toggle()
+                    favoriteTip.invalidate(reason: .actionPerformed)
                 }) {
                     Image(systemName: isFavorite ? "star.fill" : "star")
+                }
+                .popoverTip(favoriteTip) { action in
+                    if action.id == "detailPage" {
+                        print("I want to know more")
+                    }
                 }
             })
         }
@@ -55,5 +80,12 @@ struct PopoverExample: View {
 }
 
 #Preview {
-    PopoverExample()
+    FinalPopoverExample()
+        .task {
+            try? Tips.resetDatastore()
+            try? Tips.configure([
+                .displayFrequency(.immediate),
+                .datastoreLocation(.applicationDefault)
+            ])
+        }
 }

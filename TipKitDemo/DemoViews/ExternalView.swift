@@ -55,7 +55,7 @@ struct ExternalView: View {
     
     private func startRun() -> some View {
         StartRunView(action: {
-            HistoryTip.didStartARun.sendDonation()
+//            HistoryTip.didStartARun.sendDonation()
         })
         .padding(.horizontal, 20)
     }

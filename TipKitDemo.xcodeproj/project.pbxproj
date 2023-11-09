@@ -22,6 +22,8 @@
 		91C5FA632AFBDD8E00E4A15E /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C5FA622AFBDD8E00E4A15E /* ShareView.swift */; };
 		91C5FA662AFBE20E00E4A15E /* PopoverExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C5FA652AFBE20E00E4A15E /* PopoverExample.swift */; };
 		91C5FA682AFBF33400E4A15E /* ExternalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C5FA672AFBF33400E4A15E /* ExternalView.swift */; };
+		91C5FA6D2AFCEEF000E4A15E /* FinalInline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C5FA6C2AFCEEF000E4A15E /* FinalInline.swift */; };
+		91C5FA6F2AFCEF4A00E4A15E /* FinalPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C5FA6E2AFCEF4A00E4A15E /* FinalPopover.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		91C5FA622AFBDD8E00E4A15E /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		91C5FA652AFBE20E00E4A15E /* PopoverExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverExample.swift; sourceTree = "<group>"; };
 		91C5FA672AFBF33400E4A15E /* ExternalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalView.swift; sourceTree = "<group>"; };
+		91C5FA6C2AFCEEF000E4A15E /* FinalInline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalInline.swift; sourceTree = "<group>"; };
+		91C5FA6E2AFCEF4A00E4A15E /* FinalPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalPopover.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,7 @@
 		9140F4592AE6BA2B00E328E0 /* TipKitDemo */ = {
 			isa = PBXGroup;
 			children = (
+				91C5FA6B2AFCEEE400E4A15E /* FinalResult */,
 				91C5FA5D2AFBD1B000E4A15E /* Components */,
 				91C5FA5A2AFBD0E400E4A15E /* DemoViews */,
 				919B3C5B2AF5219500DE0DDC /* Extensions */,
@@ -140,6 +145,15 @@
 				91C5FA622AFBDD8E00E4A15E /* ShareView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		91C5FA6B2AFCEEE400E4A15E /* FinalResult */ = {
+			isa = PBXGroup;
+			children = (
+				91C5FA6C2AFCEEF000E4A15E /* FinalInline.swift */,
+				91C5FA6E2AFCEF4A00E4A15E /* FinalPopover.swift */,
+			);
+			path = FinalResult;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +236,8 @@
 				910360A92AEBDACF001A3B13 /* TabBarView.swift in Sources */,
 				91C5FA632AFBDD8E00E4A15E /* ShareView.swift in Sources */,
 				919B3C642AF5256100DE0DDC /* View+Extension.swift in Sources */,
+				91C5FA6F2AFCEF4A00E4A15E /* FinalPopover.swift in Sources */,
+				91C5FA6D2AFCEEF000E4A15E /* FinalInline.swift in Sources */,
 				9140F45B2AE6BA2B00E328E0 /* TipKitDemoApp.swift in Sources */,
 				91C5FA682AFBF33400E4A15E /* ExternalView.swift in Sources */,
 				91C5FA5C2AFBD0FA00E4A15E /* InlineExample.swift in Sources */,

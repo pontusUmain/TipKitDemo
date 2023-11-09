@@ -1,33 +1,52 @@
 //
-//  InlineExample.swift
+//  FinalInline.swift
 //  TipKitDemo
 //
-//  Created by Pontus Croneld on 2023-11-08.
+//  Created by Pontus Croneld on 2023-11-09.
 //
 
-/*
- 
- Step 0. Configure tips to be shown by adding display frequency
- 
- Step 1. Show simple inline example, it's now possible to see your history on the main mage!
- 
- Step 2. Move to next page
- 
- Step 3. Show off maxDisplayCount as an Option, and an event based rule
- 
- Step 4. Move to next page
- 
- */
-
 import SwiftUI
+import TipKit
 
-struct InlineExample: View {
+struct HistoryTip: Tip {
+
+    static var didStartARun: Event = Event(id: "startedARun")
+
+    var title: Text {
+        Text("Share your progress")
+    }
+
+    var message: Text? {
+        Text("It's really cool to brag to your friends")
+    }
+
+    var image: Image? {
+        Image(systemName: "shoe")
+    }
+
+    var options: [TipOption] {
+        [
+            Tip.MaxDisplayCount(3)
+        ]
+    }
+
+    var rules: [Rule] {
+        #Rule(Self.didStartARun) {
+            $0.donations.count >= 0
+        }
+    }
+}
+
+struct FinalInlineExample: View {
+    
+    let historyTip = HistoryTip()
     
     var body: some View {
         NavigationView {
                 VStack {
                     ScrollView {
                         recentRuns()
+                        tipSection()
                         shareSection()
                     }
                     Spacer()
@@ -39,6 +58,12 @@ struct InlineExample: View {
         }
     }
     
+    private func tipSection() -> some View {
+        TipView(HistoryTip())
+            .padding(.horizontal, 20)
+
+    }
+    
     private func shareSection() -> some View {
         ShareView(friends: Person.demo)
             .padding(.horizontal, 20)
@@ -46,7 +71,7 @@ struct InlineExample: View {
     
     private func startRun() -> some View {
         StartRunView(action: {
-            // Action
+            HistoryTip.didStartARun.sendDonation()
         })
         .padding(.horizontal, 20)
     }
@@ -69,5 +94,12 @@ struct InlineExample: View {
 }
 
 #Preview {
-    InlineExample()
+    FinalInlineExample()
+        .task {
+            try? Tips.resetDatastore()
+            try? Tips.configure([
+                .displayFrequency(.immediate),
+                .datastoreLocation(.applicationDefault)
+            ])
+        }
 }
