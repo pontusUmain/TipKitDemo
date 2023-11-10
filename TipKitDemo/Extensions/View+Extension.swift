@@ -11,12 +11,12 @@ import TipKit
 
 extension View {
     @ViewBuilder func ifTip(tipId: String) -> some View {
-        if let tip = TipConverter.shared.tips.first(where: { $0.id == tipId })
-        {
-            self.popoverTip(tip)
-        } else {
+//        if let tip = TipConverter.shared.tips.first(where: { $0.id == tipId })
+//        {
+//            self.popoverTip(tip)
+//        } else {
             self
-        }
+//        }
     }
 }
 
