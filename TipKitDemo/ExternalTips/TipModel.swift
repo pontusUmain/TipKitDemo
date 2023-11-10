@@ -18,6 +18,7 @@ struct TipModels: Codable {
     }
 }
 
+// Cheat sheet
 struct JsonTip: Tip {
     
     let model: TipModels.Model

@@ -17,8 +17,6 @@ struct ExternalView: View {
                 VStack {
                     ScrollView {
                         recentRuns()
-                            .ifTip(tipId: "second")
-                        tipSection()
                         shareSection()
                     }
                     Spacer()
@@ -37,16 +35,7 @@ struct ExternalView: View {
      
      */
     
-    @ViewBuilder
-    private func tipSection() -> some View {
-        if let tip = tipConverter.tips.first(where: { $0.id == "first" }) {
-            TipView(tip)
-                .padding(.horizontal, 20)
-        } else {
-            EmptyView()
-        }
-
-    }
+    
     
     private func shareSection() -> some View {
         ShareView(friends: Person.demo)
@@ -55,7 +44,6 @@ struct ExternalView: View {
     
     private func startRun() -> some View {
         StartRunView(action: {
-//            HistoryTip.didStartARun.sendDonation()
         })
         .padding(.horizontal, 20)
     }
@@ -74,6 +62,17 @@ struct ExternalView: View {
             }
         }
     }
+    
+//    @ViewBuilder
+//    private func tipSection() -> some View {
+//        if let tip = tipConverter.tips.first(where: { $0.id == "first" }) {
+//            TipView(tip)
+//                .padding(.horizontal, 20)
+//        } else {
+//            EmptyView()
+//        }
+//
+//    }
     
 }
 
