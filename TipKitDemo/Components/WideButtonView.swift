@@ -1,5 +1,5 @@
 //
-//  StartRunView.swift
+//  WideButtonView.swift
 //  TipKitDemo
 //
 //  Created by Pontus Croneld on 2023-11-08.
@@ -7,15 +7,16 @@
 
 import SwiftUI
 
-struct StartRunView: View {
+struct WideButtonView: View {
     
     let action: () -> ()
+    let text: String
     
     var body: some View {
         Button(action: { action() }) {
             HStack {
                 Spacer()
-                Text("Start run")
+                Text(text)
                     .font(.title3)
                     .padding(.vertical, 20)
                 Spacer()
@@ -28,5 +29,5 @@ struct StartRunView: View {
 }
 
 #Preview {
-    StartRunView(action: {})
+    WideButtonView(action: {}, text: "Start Run")
 }

@@ -1,14 +1,14 @@
 {
     "tips" : [
         {
-            "title": "First tip",
-            "message": "First information",
-            "id": "first"
+            "title": "Share your progress",
+            "message": "Let your friends know you've been running",
+            "id": "share_tip"
         },
         {
-            "title": "Second tip",
-            "message": "Second information",
-            "id": "second"
+            "title": "Mark as favorite",
+            "message": "Remember your run forever",
+            "id": "favorite_tip"
         }
     ]
 }

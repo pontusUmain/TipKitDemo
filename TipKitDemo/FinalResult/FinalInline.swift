@@ -70,9 +70,9 @@ struct FinalInlineExample: View {
     }
     
     private func startRun() -> some View {
-        StartRunView(action: {
+        WideButtonView(action: {
             HistoryTip.didStartARun.sendDonation()
-        })
+        }, text: "Start run")
         .padding(.horizontal, 20)
     }
     
@@ -97,9 +97,6 @@ struct FinalInlineExample: View {
     FinalInlineExample()
         .task {
             try? Tips.resetDatastore()
-            try? Tips.configure([
-                .displayFrequency(.immediate),
-                .datastoreLocation(.applicationDefault)
-            ])
+            try? Tips.configure()
         }
 }

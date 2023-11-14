@@ -8,34 +8,49 @@
 import SwiftUI
 import TipKit
 
-struct FavoriteRunTip: Tip {
+struct FavoriteTip: Tip {
+    
+    @Parameter static var isLoggedIn: Bool = false
+    
     var title: Text {
         Text("Mark as favorite")
     }
 
     var message: Text? {
-        Text("And remember it forever")
+        Text("Remember it forever")
     }
-
+    
+    var image: Image? {
+        Image(systemName: "star")
+    }
+    
     var actions: [Action] {
-        [
-            Action(id: "detailPage", title: "Read more")
-        ]
+        Action(title: "Read more")
+    }
+    
+    var rules: [Rule] {
+        #Rule(Self.$isLoggedIn) {
+            $0 == true
+        }
     }
 }
 
 struct FinalPopoverExample: View {
     
-    private let favoriteTip = FavoriteRunTip()
-    
     @State var isFavorite = false
+    @State var isLoggedIn = false
     
+    private let favoriteTip = FavoriteTip()
+
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 10) {
                 recentRuns()
                 detailText()
                 Spacer()
+                if !isLoggedIn {
+                    loginButton()
+                }
             }
             .padding(.horizontal, 20)
             .navigationTitle("Example of Popover")
@@ -46,12 +61,15 @@ struct FinalPopoverExample: View {
                 }) {
                     Image(systemName: isFavorite ? "star.fill" : "star")
                 }
-                .popoverTip(favoriteTip) { action in
-                    if action.id == "detailPage" {
-                        print("I want to know more")
-                    }
-                }
+                .popoverTip(favoriteTip, action: { _ in
+                    print("Read more")
+                })
             })
+        }
+        .onChange(of: isLoggedIn) { _, newValue in
+            if newValue {
+                FavoriteTip.isLoggedIn = true
+            }
         }
     }
     
@@ -77,15 +95,17 @@ struct FinalPopoverExample: View {
         RunView(model: .thursday)
     }
     
+    private func loginButton() -> some View {
+        WideButtonView(action: {
+            isLoggedIn = true
+        }, text: "Log in")
+    }
 }
 
 #Preview {
     FinalPopoverExample()
         .task {
             try? Tips.resetDatastore()
-            try? Tips.configure([
-                .displayFrequency(.immediate),
-                .datastoreLocation(.applicationDefault)
-            ])
+            try? Tips.configure()
         }
 }

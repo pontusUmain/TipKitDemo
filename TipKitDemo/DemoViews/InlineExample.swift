@@ -7,13 +7,13 @@
 
 /*
  
- Step 0. Configure tips to be shown by adding display frequency
+ Step 0. Configure tips to be shown by adding Tips.configure()
  
- Step 1. Show simple inline example, it's now possible to see your history on the main mage!
+ Step 1. Show off inline example, configure the look of it
  
  Step 2. Move to next page
  
- Step 3. Show off maxDisplayCount as an Option, and an event based rule
+ Step 3. Add an event based rule
  
  Step 4. Move to next page
  
@@ -22,7 +22,7 @@
 import SwiftUI
 
 struct InlineExample: View {
-    
+        
     var body: some View {
         NavigationView {
                 VStack {
@@ -35,7 +35,6 @@ struct InlineExample: View {
 
                 }
                 .navigationTitle("Example of Inline")
-
         }
     }
     
@@ -45,9 +44,9 @@ struct InlineExample: View {
     }
     
     private func startRun() -> some View {
-        StartRunView(action: {
+        WideButtonView(action: {
             // Action
-        })
+        }, text: "Start run")
         .padding(.horizontal, 20)
     }
     
