@@ -9,15 +9,25 @@ import Foundation
 import SwiftUI
 import TipKit
 
+// Model for Json-file
+struct TipModels: Codable {
+    var tips: [Model]
+    
+    struct Model: Codable {
+        var title: String
+        var message: String?
+        var id: String
+    }
+}
+
 class TipConverter {
     static var shared = TipConverter()
-    let tips: [JsonTip]
     
     init() {
         let tipModels = Bundle.main.decode(TipModels.self, from: "tips.json")
-        tips = tipModels.tips.map({ JsonTip(model: $0) })
     }
     
     func invalidateTipById(_ id: String) {
     }
 }
+
