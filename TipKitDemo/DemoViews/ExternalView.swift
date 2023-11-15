@@ -31,8 +31,6 @@ struct ExternalView: View {
      
      Step 5. Show externally fetched tips, inline
      
-     Step 6. If there's time, configure the look of the tips in one of the views
-     
      */
     
     private func shareSection() -> some View {

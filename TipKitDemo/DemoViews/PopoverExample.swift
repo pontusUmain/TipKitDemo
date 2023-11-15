@@ -6,12 +6,10 @@
 //
 
 import SwiftUI
-import TipKit
 
 struct PopoverExample: View {
     
     @State var isFavorite = false
-    @State var isLoggedIn = false
     
     var body: some View {
         NavigationView {
@@ -19,9 +17,6 @@ struct PopoverExample: View {
                 recentRuns()
                 detailText()
                 Spacer()
-                if !isLoggedIn {
-                    loginButton()
-                }
             }
             .padding(.horizontal, 20)
             .navigationTitle("Example of Popover")
@@ -34,19 +29,13 @@ struct PopoverExample: View {
                 }
             })
         }
-        .onChange(of: isLoggedIn) { _, newValue in
-            if newValue {
-            }
-        }
     }
     
     /*
-     Step 2. Show popover example, invalidate on button pressed
+     Step 2. Show popover example, invalidate on button pressed, add an action to the popover
      
      Step 3. Move back to Inline example
-     
-     Step 4. Add an action to the popover, add a parameter based rule
-     
+          
      Step 5. What if we want to fetch tips externally?
      */
     
@@ -60,12 +49,6 @@ struct PopoverExample: View {
     
     private func recentRuns() -> some View {
         RunView(model: .thursday)
-    }
-    
-    private func loginButton() -> some View {
-        WideButtonView(action: {
-            isLoggedIn = true
-        }, text: "Log in")
     }
 }
 

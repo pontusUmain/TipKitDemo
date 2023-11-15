@@ -13,7 +13,7 @@
  
  Step 2. Move to next page
  
- Step 3. Add an event based rule
+ Step 3. Add an event based rule, then a parameter based rule
  
  Step 4. Move to next page
  
@@ -23,16 +23,19 @@ import SwiftUI
 
 struct InlineExample: View {
         
+    @State var isLoggedIn: Bool = false
+        
     var body: some View {
         NavigationView {
                 VStack {
                     ScrollView {
                         recentRuns()
                         shareSection()
+                        startRun()
+                        if !isLoggedIn {
+                            loginButton()
+                        }
                     }
-                    Spacer()
-                    startRun()
-
                 }
                 .navigationTitle("Example of Inline")
         }
@@ -45,8 +48,16 @@ struct InlineExample: View {
     
     private func startRun() -> some View {
         WideButtonView(action: {
-            // Action
+            // Event action
         }, text: "Start run")
+        .padding(.horizontal, 20)
+    }
+    
+    private func loginButton() -> some View {
+        WideButtonView(action: {
+            isLoggedIn.toggle()
+            // Parameter action
+        }, text: "Log in")
         .padding(.horizontal, 20)
     }
     
