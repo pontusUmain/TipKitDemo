@@ -17,6 +17,7 @@ struct ExternalView: View {
                 VStack {
                     ScrollView {
                         recentRuns()
+                        tipSection()
                         shareSection()
                     }
                     Spacer()
@@ -32,6 +33,16 @@ struct ExternalView: View {
      Step 5. Show externally fetched tips, inline
      
      */
+    
+    @ViewBuilder
+    private func tipSection() -> some View {
+        if let tip = tipConverter.tips.first(where: { $0.id == "share_tip" }) {
+            TipView(tip)
+                .padding(.horizontal, 20)
+        } else {
+            EmptyView()
+        }
+    }
     
     private func shareSection() -> some View {
         ShareView(friends: Person.demo)

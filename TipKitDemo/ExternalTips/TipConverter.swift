@@ -20,11 +20,33 @@ struct TipModels: Codable {
     }
 }
 
+struct DownloadedTip: Tip {
+    let model: TipModels.Model
+    
+    var title: Text {
+        Text(model.title)
+    }
+    
+    var message: Text? {
+        if let message = model.message {
+            Text(message)
+        } else {
+            nil
+        }
+    }
+    
+    var id: String {
+        model.id
+    }
+}
+
 class TipConverter {
     static var shared = TipConverter()
+    let tips: [DownloadedTip]
     
     init() {
         let tipModels = Bundle.main.decode(TipModels.self, from: "tips.json")
+        tips = tipModels.tips.map({ DownloadedTip(model: $0) })
     }
     
     func invalidateTipById(_ id: String) {

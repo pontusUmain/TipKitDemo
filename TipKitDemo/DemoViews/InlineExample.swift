@@ -20,16 +20,45 @@
  */
 
 import SwiftUI
+import TipKit
+
+struct ShareTip: Tip {
+    
+    @Parameter static var isLoggedIn: Bool = false
+    
+    static var didPressRun = Event(id: "didPressRun")
+    
+    var title: Text {
+        Text("Share your progress with your friends")
+    }
+    
+    var message: Text? {
+        Text("If you have any")
+    }
+    
+    var rules: [Rule] {
+        [
+        #Rule(Self.didPressRun) {
+            $0.donations.count > 0
+        },
+        #Rule(Self.$isLoggedIn) {
+            $0 == true
+        }
+        ]
+    }
+}
 
 struct InlineExample: View {
         
+    private var shareTip = ShareTip()
     @State var isLoggedIn: Bool = false
-        
+    
     var body: some View {
         NavigationView {
                 VStack {
                     ScrollView {
                         recentRuns()
+                        tipSection()
                         shareSection()
                         startRun()
                         if !isLoggedIn {
@@ -41,6 +70,13 @@ struct InlineExample: View {
         }
     }
     
+    private func tipSection() -> some View {
+        TipView(shareTip)
+            .tipBackground(Color.blue.opacity(0.2))
+            .tipCornerRadius(20)
+            .padding(.horizontal)
+    }
+    
     private func shareSection() -> some View {
         ShareView(friends: Person.demo)
             .padding(.horizontal, 20)
@@ -48,7 +84,7 @@ struct InlineExample: View {
     
     private func startRun() -> some View {
         WideButtonView(action: {
-            // Event action
+            ShareTip.didPressRun.sendDonation()
         }, text: "Start run")
         .padding(.horizontal, 20)
     }
@@ -56,7 +92,7 @@ struct InlineExample: View {
     private func loginButton() -> some View {
         WideButtonView(action: {
             isLoggedIn.toggle()
-            // Parameter action
+            ShareTip.isLoggedIn.toggle()
         }, text: "Log in")
         .padding(.horizontal, 20)
     }
@@ -80,4 +116,7 @@ struct InlineExample: View {
 
 #Preview {
     InlineExample()
+        .task {
+            try? Tips.configure()
+        }
 }

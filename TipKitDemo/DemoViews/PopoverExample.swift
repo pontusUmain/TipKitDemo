@@ -6,9 +6,21 @@
 //
 
 import SwiftUI
+import TipKit
+
+struct DetailButtonTip: Tip {
+    var title: Text {
+        Text("Mark as favorite")
+    }
+    
+    var actions: [Action] {
+        Action(title: "Read more")
+    }
+}
 
 struct PopoverExample: View {
     
+    private let detailTip = DetailButtonTip()
     @State var isFavorite = false
     
     var body: some View {
@@ -23,10 +35,13 @@ struct PopoverExample: View {
             .toolbar(content: {
                 Button(action: {
                     isFavorite.toggle()
-                    // Action
+                    detailTip.invalidate(reason: .actionPerformed)
                 }) {
                     Image(systemName: isFavorite ? "star.fill" : "star")
                 }
+                .popoverTip(detailTip, action: { _ in
+                    print("Read more pressed")
+                })
             })
         }
     }
@@ -36,7 +51,7 @@ struct PopoverExample: View {
      
      Step 3. Move back to Inline example
           
-     Step 5. What if we want to fetch tips externally?
+     Step 4. What if we want to fetch tips externally?
      */
     
     private func detailText() -> some View {
@@ -54,4 +69,7 @@ struct PopoverExample: View {
 
 #Preview {
     PopoverExample()
+        .task {
+            try? Tips.configure()
+        }
 }
